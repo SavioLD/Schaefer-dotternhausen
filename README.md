@@ -24,17 +24,17 @@ landen direkt in dieser Tabelle. Die Felder werden als JSON übergeben:
 `vorname, nachname, name, email, telefon, stelle, erfahrung, lebenslauf,
 datenschutz, quelle, seite`.
 
-### 2. Logo & Fotos (optional, aber empfohlen)
-Dateien in `bilder/` ablegen – werden automatisch erkannt:
-- Logo: `schaefer-logo.svg` (Header/Footer, farbig) und
-  `schaefer-logo-weiss.svg` (Hero, weiß). Solange keins vorhanden ist, greift
-  der Text-Schriftzug „Schäfer".
-- Hero-Foto: `hero.jpg` (allgemein) bzw. `hero-systemplaner.jpg`,
-  `hero-zeichner.jpg`, `hero-sachbearbeiter.jpg` pro Stelle. Ohne Foto bleibt
-  der rote Markenverlauf stehen.
+### 2. Logo & Fotos
+- Logo: `bilder/RZ_schaefer_logo.png` = das Original (schwarze Wortmarke +
+  roter Schwung, transparent) – wird im hellen Header verwendet.
+  `bilder/schaefer-logo-weiss.png` = daraus erzeugte Weiß-Version (weiße
+  Wortmarke, roter Schwung) für das dunkle Hero und den dunklen Footer.
+  ✅ bereits eingebunden.
+- Hero-Foto (optional): `bilder/hero.jpg` ablegen – wird automatisch erkannt.
+  Ohne Foto bleibt der rote Markenverlauf stehen.
 
-## Deep-Links pro Stelle (für Ads)
-`?stelle=systemplaner` · `?stelle=zeichner` · `?stelle=sachbearbeiter`
+## Hero-Foto
+`bilder/hero.jpg` (optional) – sonst roter Markenverlauf.
 – setzt Hero-Titel + Formular direkt auf die gewählte Position.
 
 ## Lebenslauf-Upload

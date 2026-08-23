@@ -80,7 +80,7 @@ img{max-width:100%;display:block}
 .topbar{position:fixed;inset:0 0 auto 0;z-index:50;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);background:rgba(255,255,255,.9);border-bottom:1px solid var(--line)}
 .topbar__inner{display:flex;align-items:center;justify-content:space-between;height:64px}
 .brand{display:flex;align-items:center}
-.brand__logo{display:none;height:40px;width:auto}
+.brand__logo{display:none;height:44px;width:auto}
 .brand__fallback{display:flex;flex-direction:column;line-height:1.02}
 .brand__name{font-family:var(--f-display);font-weight:900;font-size:26px;letter-spacing:.01em;color:var(--brand)}
 .brand__sub{font-weight:800;font-size:7.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft)}
@@ -108,7 +108,7 @@ img{max-width:100%;display:block}
 .hero__cta .btn{text-shadow:none}
 .hero__panel::before{content:"";position:absolute;inset:0 auto 0 -100vw;width:calc(100vw + 62%);background:linear-gradient(112deg,rgba(20,12,13,.97) 0%,rgba(120,15,26,.9) 46%,rgba(216,31,52,.5) 100%);z-index:-1;border-radius:0 62% 62% 0 / 0 50% 50% 0;box-shadow:0 30px 80px rgba(20,10,12,.35)}
 .hero__logo{margin-bottom:26px}
-.hero__logo img{display:none;height:54px;width:auto}
+.hero__logo img{display:none;height:64px;width:auto}
 .hero__logo .brand__fallback b{font-family:var(--f-display);font-weight:900;font-size:38px;letter-spacing:.02em;color:#fff;line-height:1}
 .hero__logo .brand__fallback span{display:block;font-size:9.5px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:#f6c9ce;margin-top:5px}
 .hero__eyebrow{display:inline-flex;align-items:center;gap:9px;font-size:13px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:#f6c9ce;margin-bottom:16px}
@@ -265,7 +265,7 @@ section[id],.form-card{scroll-margin-top:80px}
 /* ---------- footer ---------- */
 footer{padding:52px 0 36px;background:var(--brand-900);color:#c8ccd3}
 .footer__grid{display:flex;justify-content:space-between;gap:32px;flex-wrap:wrap}
-.footer__brand img{display:none;height:46px;width:auto;margin-bottom:6px}
+.footer__brand img{display:none;height:52px;width:auto;margin-bottom:6px}
 .footer__brand b{font-family:var(--f-display);font-weight:900;font-size:29px;letter-spacing:.02em;color:#fff}
 .footer__brand .brand__sub{color:#f39aa4;font-size:9px;margin-top:2px}
 .footer__col p{font-size:14px;color:#a7adb6;margin-top:12px;max-width:320px;font-weight:600}
@@ -658,9 +658,9 @@ footer{padding:52px 0 36px;background:var(--brand-900);color:#c8ccd3}
       probe.onerror = tryNext; probe.src = url;
     })();
   }
-  loadLogo(document.getElementById("logoHeader"), ["bilder/schaefer-logo.svg","bilder/schaefer-logo.png","bilder/logo.svg","bilder/logo.png"]);
-  loadLogo(document.getElementById("logoHero"),   ["bilder/schaefer-logo-weiss.svg","bilder/schaefer-logo-weiss.png","bilder/schaefer-logo-white.svg","bilder/schaefer-logo-white.png","bilder/schaefer-logo.svg","bilder/schaefer-logo.png"]);
-  loadLogo(document.getElementById("logoFooter"), ["bilder/schaefer-logo-weiss.svg","bilder/schaefer-logo-weiss.png","bilder/schaefer-logo-white.svg","bilder/schaefer-logo-white.png","bilder/schaefer-logo.svg","bilder/schaefer-logo.png"]);
+  loadLogo(document.getElementById("logoHeader"), ["bilder/RZ_schaefer_logo.png"]);                    // Original (schwarz + roter Schwung) auf hellem Grund
+  loadLogo(document.getElementById("logoHero"),   ["bilder/schaefer-logo-weiss.png","bilder/RZ_schaefer_logo.png"]);   // Weiß-Version fürs dunkle Hero
+  loadLogo(document.getElementById("logoFooter"), ["bilder/schaefer-logo-weiss.png","bilder/RZ_schaefer_logo.png"]);   // Weiß-Version für den dunklen Footer
 
   var form=document.getElementById("applyForm"), steps=Array.prototype.slice.call(form.querySelectorAll(".fstep")), TOTAL=steps.length;
   var bar=document.getElementById("progressBar"), label=document.getElementById("stepLabel");
