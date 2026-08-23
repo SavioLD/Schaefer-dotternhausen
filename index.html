@@ -280,6 +280,16 @@ footer{padding:52px 0 36px;background:var(--brand-900);color:#c8ccd3}
 .reveal.is-in{opacity:1;transform:none}
 @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
 
+/* ---------- gallery ---------- */
+.gallery-sec{background:var(--bg-soft);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:44px}
+.gallery__item{position:relative;margin:0;border-radius:var(--radius);overflow:hidden;border:1.5px solid var(--line);background:#fff;box-shadow:0 6px 22px rgba(35,20,22,.07)}
+.gallery__item img{width:100%;height:260px;object-fit:cover;display:block;transition:transform .5s ease}
+.gallery__item:hover img{transform:scale(1.05)}
+.gallery__item figcaption{position:absolute;left:0;right:0;bottom:0;padding:26px 18px 14px;font-family:var(--f-display);font-weight:800;font-size:14.5px;color:#fff;background:linear-gradient(180deg,transparent,rgba(20,10,12,.82))}
+@media(max-width:920px){.gallery{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.gallery{grid-template-columns:1fr;gap:14px}.gallery__item img{height:220px}}
+
 /* ---------- Sticky Mobile-CTA ---------- */
 .mobile-cta{display:none}
 @media(max-width:760px){
@@ -318,8 +328,30 @@ footer{padding:52px 0 36px;background:var(--brand-900);color:#c8ccd3}
   .footer__grid{flex-direction:column;gap:26px}
   .footer__legal{flex-direction:column;gap:8px}
 }
-@media(max-width:380px){.hero h1{font-size:26px}.brand__sub{display:none}}
-@media(hover:none){.btn--primary:hover,.job:hover,.choice:hover{transform:none}}
+/* ---------- Mobil-Feinschliff ---------- */
+@media(max-width:760px){
+  .hero__panel{padding:104px 20px 48px;min-height:74vh;justify-content:center}
+  .hero__logo{margin-bottom:20px}
+  .hero__logo img{height:48px}
+  .hero__eyebrow{font-size:12px;margin-bottom:12px}
+  .hero__reassure{gap:6px 14px;font-size:12.5px}
+  .topbar__cta,.topbar .btn--sm{padding:11px 18px}
+  .sec-lead{max-width:100%}
+  .job-grid--single{max-width:none}
+  .apply__reassure{gap:6px 14px;font-size:13px}
+  .apply__contact{font-size:14px;padding:0 4px}
+  .faq summary{padding:16px 16px;font-size:15px}
+  .faq .faq__a{padding:0 16px 18px}
+  .gallery__item figcaption{font-size:13.5px;padding:22px 14px 12px}
+}
+@media(max-width:400px){
+  .hero h1{font-size:26px}
+  .btn{font-size:15px;padding:14px 20px}
+  .fstep .q{font-size:15px}
+  .choice{font-size:15px;padding:14px 14px}
+}
+@media(max-width:380px){.brand__sub{display:none}}
+@media(hover:none){.btn--primary:hover,.job:hover,.choice:hover,.gallery__item:hover img{transform:none}}
 </style>
 </head>
 <body>
@@ -432,6 +464,29 @@ footer{padding:52px 0 36px;background:var(--brand-900);color:#c8ccd3}
       <div class="benefit reveal"><div class="benefit__ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.2 4.2l2.8 2.8M17 17l2.8 2.8M1 12h4M19 12h4M4.2 19.8 7 17M17 7l2.8-2.8"/></svg></div><b>Viel Gestaltungsspielraum</b><p>Abwechslungsreiche Tätigkeit mit viel Eigenverantwortung – dein Bereich, mitgestaltet von dir.</p></div>
       <div class="benefit reveal"><div class="benefit__ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div><b>Modernste Technik</b><p>Modellbasierte Planung mit AutoCAD/Revit &amp; PlanCal Nova – Technik auf aktuellem Stand.</p></div>
       <div class="benefit reveal"><div class="benefit__ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg></div><b>Top erreichbar</b><p>Standort Dotternhausen im Zollernalbkreis – zentral zwischen Balingen und Rottweil.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ EINBLICKE / GALERIE ============ -->
+<section class="gallery-sec" id="einblicke">
+  <div class="shell">
+    <span class="kicker">Einblicke</span>
+    <h2 class="sec-title">Das erwartet dich bei Schäfer.</h2>
+    <p class="sec-lead">Vom ersten Planungsmodell bis zur fertigen Anlage – moderne Haustechnik von A bis Z, gemacht in Dotternhausen.</p>
+    <div class="gallery">
+      <figure class="gallery__item reveal">
+        <img loading="lazy" src="bilder/schaefer_pv_planung.jpg" alt="Photovoltaik- und Anlagenplanung bei Schäfer" onerror="this.closest('.gallery__item').style.display='none'" />
+        <figcaption>Planung mit Zukunft – von PV bis Wärmepumpe</figcaption>
+      </figure>
+      <figure class="gallery__item reveal">
+        <img loading="lazy" src="bilder/schaefer_lueftungstechnik.jpg" alt="Lüftungstechnik von Schäfer intelligente Haustechnik" onerror="this.closest('.gallery__item').style.display='none'" />
+        <figcaption>Lüftungstechnik auf höchstem Niveau</figcaption>
+      </figure>
+      <figure class="gallery__item reveal">
+        <img loading="lazy" src="bilder/schaefer_dotternhausen_farhzeugbeschriftung_anhaenger.jpg" alt="Schäfer intelligente Haustechnik Firmenfahrzeug" onerror="this.closest('.gallery__item').style.display='none'" />
+        <figcaption>Ein starkes Team im ganzen Zollernalbkreis</figcaption>
+      </figure>
     </div>
   </div>
 </section>
