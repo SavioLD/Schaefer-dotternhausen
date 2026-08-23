@@ -476,16 +476,16 @@ footer{padding:52px 0 36px;background:var(--brand-900);color:#c8ccd3}
     <p class="sec-lead">Vom ersten Planungsmodell bis zur fertigen Anlage – moderne Haustechnik von A bis Z, gemacht in Dotternhausen.</p>
     <div class="gallery">
       <figure class="gallery__item reveal">
-        <img loading="lazy" src="bilder/schaefer_pv_planung.jpg" alt="Photovoltaik- und Anlagenplanung bei Schäfer" onerror="this.closest('.gallery__item').style.display='none'" />
-        <figcaption>Planung mit Zukunft – von PV bis Wärmepumpe</figcaption>
-      </figure>
-      <figure class="gallery__item reveal">
         <img loading="lazy" src="bilder/schaefer_lueftungstechnik.jpg" alt="Lüftungstechnik von Schäfer intelligente Haustechnik" onerror="this.closest('.gallery__item').style.display='none'" />
-        <figcaption>Lüftungstechnik auf höchstem Niveau</figcaption>
+        <figcaption>Haustechnik auf höchstem Niveau</figcaption>
       </figure>
       <figure class="gallery__item reveal">
-        <img loading="lazy" src="bilder/schaefer_dotternhausen_farhzeugbeschriftung_anhaenger.jpg" alt="Schäfer intelligente Haustechnik Firmenfahrzeug" onerror="this.closest('.gallery__item').style.display='none'" />
+        <img loading="lazy" src="bilder/schaefer_dotternhausen_farhzeugbeschriftung_anhaenger.jpg" alt="Schäfer Heizmobil – Firmenfahrzeug im Zollernalbkreis" onerror="this.closest('.gallery__item').style.display='none'" />
         <figcaption>Ein starkes Team im ganzen Zollernalbkreis</figcaption>
+      </figure>
+      <figure class="gallery__item reveal">
+        <img loading="lazy" src="bilder/schaefer_pv_planung.jpg" alt="Technische Planung bei Schäfer – von PV bis Wärmepumpe" onerror="this.closest('.gallery__item').style.display='none'" />
+        <figcaption>Deine künftige Aufgabe: moderne Planung</figcaption>
       </figure>
     </div>
   </div>
@@ -788,11 +788,11 @@ footer{padding:52px 0 36px;background:var(--brand-900);color:#c8ccd3}
   });
   form.addEventListener("keydown", function(ev){ if(ev.key==="Enter"&&ev.target.type!=="file"){ ev.preventDefault(); if(!btnNext.disabled) next(); } });
 
-  /* Hero-Foto: optionales Bild in bilder/ ablegen (hero.jpg). Wird keins
-     gefunden, bleibt der rote Markenverlauf stehen. */
+  /* Hero-Foto: Planungs-Motiv (passt zur Stelle). Eigenes „hero.jpg" hat
+     Vorrang; sonst wird das Planungsfoto genutzt, sonst bleibt der Verlauf. */
   (function(){
     var heroMedia = document.getElementById("heroMedia");
-    var cands = ["bilder/hero.jpg","hero.jpg","bilder/hero.jpeg","bilder/hero.png"];
+    var cands = ["bilder/hero.jpg","bilder/schaefer_pv_planung.jpg","hero.jpg"];
     (function tryNext(i){
       if (i >= cands.length) return;         // kein Bild gefunden -> Farbverlauf bleibt
       var probe = new Image();
