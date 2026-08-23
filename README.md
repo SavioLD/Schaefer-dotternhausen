@@ -15,22 +15,14 @@ optionalem Lebenslauf-Upload), FAQ und Footer.
 
 ## Noch einzutragen (2 Dinge)
 
-### 1. LeadTable-Webhook  ⚠️ Pflicht, damit Bewerbungen ankommen
+### 1. LeadTable-Webhook  ✅ verbunden
 Verbundene Kachel:
 `https://portal.lead-table.com/customer/69c6564fa939ff445ad9cb74/table/69c6566ba939ff445ad9d313/leads`
 
-Der Bewerbungs-Versand ist bereits verdrahtet – es fehlt nur die
-tabellenspezifische **Generic-Webhook-URL**, die aus Sicherheitsgründen nur im
-LeadTable-Portal erzeugt werden kann (signierter Token):
-
-1. LeadTable-Portal → diese Tabelle öffnen → **Integrationen / Webhook**
-2. **„Generic Webhook"** → URL kopieren
-   (Format: `https://api.lead-table.com/api/webhook/generic/<token>`)
-3. In `index.html` die Konstante `WEBHOOK_URL` ersetzen
-   (Platzhalter `HIER_LEADTABLE_WEBHOOK_TOKEN_EINSETZEN`).
-
-Die Felder werden als JSON übergeben: `vorname, nachname, name, email, telefon,
-stelle, erfahrung, lebenslauf, datenschutz, quelle, seite`.
+Der Generic-Webhook ist in `index.html` (`WEBHOOK_URL`) eingetragen – Bewerbungen
+landen direkt in dieser Tabelle. Die Felder werden als JSON übergeben:
+`vorname, nachname, name, email, telefon, stelle, erfahrung, lebenslauf,
+datenschutz, quelle, seite`.
 
 ### 2. Logo & Fotos (optional, aber empfohlen)
 Dateien in `bilder/` ablegen – werden automatisch erkannt:
