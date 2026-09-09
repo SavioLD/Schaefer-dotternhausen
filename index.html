@@ -539,26 +539,60 @@ footer{padding:52px 0 36px;background:var(--brand-900);color:#c8ccd3}
     <div class="form-card">
       <div class="form-card__head">
         <div class="progress"><div class="progress__bar" id="progressBar"></div></div>
-        <div class="progress__label"><span id="stepLabel">Schritt 1 von 3</span><span>~1 Min.</span></div>
+        <div class="progress__label"><span id="stepLabel">Schritt 1 von 6</span><span>~1 Min.</span></div>
       </div>
 
       <form class="form-card__body" id="applyForm" novalidate>
         <input class="hp" type="text" name="firma_website" tabindex="-1" autocomplete="off" aria-hidden="true" />
 
-        <!-- STEP 1: Erfahrung -->
+        <!-- STEP 1: Erfahrung (Qualifizierung 1/4) -->
         <div class="fstep is-active" data-step="1">
           <h3>Wie viel Berufserfahrung bringst du mit?</h3>
           <p class="hint">Ganz ehrlich – auch motivierte Quereinsteiger sind bei uns willkommen.</p>
           <div class="choice-grid" data-field="erfahrung">
-            <label class="choice"><input type="radio" name="erfahrung" value="Keine / unter 1 Jahr" /><span class="key">A</span><span>Keine / unter 1 Jahr</span></label>
-            <label class="choice"><input type="radio" name="erfahrung" value="1–3 Jahre" /><span class="key">B</span><span>1–3 Jahre</span></label>
-            <label class="choice"><input type="radio" name="erfahrung" value="4–8 Jahre" /><span class="key">C</span><span>4–8 Jahre</span></label>
-            <label class="choice"><input type="radio" name="erfahrung" value="Mehr als 8 Jahre" /><span class="key">D</span><span>Mehr als 8 Jahre</span></label>
+            <label class="choice"><input type="radio" name="erfahrung" value="Keine / unter 1 Jahr" data-score="0" /><span class="key">A</span><span>Keine / unter 1 Jahr</span></label>
+            <label class="choice"><input type="radio" name="erfahrung" value="1–3 Jahre" data-score="1" /><span class="key">B</span><span>1–3 Jahre</span></label>
+            <label class="choice"><input type="radio" name="erfahrung" value="4–8 Jahre" data-score="2" /><span class="key">C</span><span>4–8 Jahre</span></label>
+            <label class="choice"><input type="radio" name="erfahrung" value="Mehr als 8 Jahre" data-score="2" /><span class="key">D</span><span>Mehr als 8 Jahre</span></label>
           </div>
         </div>
 
-        <!-- STEP 2: Details -->
+        <!-- STEP 2: Hintergrund (Qualifizierung 2/4) -->
         <div class="fstep" data-step="2">
+          <h3>Welcher Hintergrund passt am ehesten zu dir?</h3>
+          <p class="hint">Für die Planung ist ein technischer Bezug hilfreich.</p>
+          <div class="choice-grid" data-field="hintergrund">
+            <label class="choice"><input type="radio" name="hintergrund" value="Ausbildung als Technischer Zeichner / Systemplaner / im SHK- bzw. TGA-Bereich" data-score="2" /><span class="key">A</span><span>Technischer Zeichner / Systemplaner / SHK<small>oder TGA-Bereich</small></span></label>
+            <label class="choice"><input type="radio" name="hintergrund" value="Technische Ausbildung in einem verwandten Bereich" data-score="1" /><span class="key">B</span><span>Technische Ausbildung in verwandtem Bereich</span></label>
+            <label class="choice"><input type="radio" name="hintergrund" value="Andere Ausbildung, aber technikaffin" data-score="1" /><span class="key">C</span><span>Andere Ausbildung, aber technikaffin</span></label>
+            <label class="choice"><input type="radio" name="hintergrund" value="Keine passende Ausbildung / nichts davon" data-score="0" /><span class="key">D</span><span>Nichts davon trifft zu</span></label>
+          </div>
+        </div>
+
+        <!-- STEP 3: CAD-Kenntnisse (Qualifizierung 3/4) -->
+        <div class="fstep" data-step="3">
+          <h3>Wie sicher bist du im Umgang mit CAD?</h3>
+          <p class="hint">Wir planen mit AutoCAD, Revit und PlanCal Nova.</p>
+          <div class="choice-grid" data-field="cad">
+            <label class="choice"><input type="radio" name="cad" value="Sehr sicher – ich arbeite regelmäßig mit CAD (Revit/AutoCAD/PlanCal Nova)" data-score="2" /><span class="key">A</span><span>Sehr sicher – regelmäßige CAD-Arbeit</span></label>
+            <label class="choice"><input type="radio" name="cad" value="Grundkenntnisse in CAD/PC-Anwendungen" data-score="1" /><span class="key">B</span><span>Grundkenntnisse in CAD / PC</span></label>
+            <label class="choice"><input type="radio" name="cad" value="Noch keine CAD-Kenntnisse, aber lernbereit" data-score="0" /><span class="key">C</span><span>Noch keine, aber ich lerne es gern</span></label>
+          </div>
+        </div>
+
+        <!-- STEP 4: Motivation (Qualifizierung 4/4) -->
+        <div class="fstep" data-step="4">
+          <h3>Wie ernst meinst du es mit dem Wechsel?</h3>
+          <p class="hint">Damit wir wissen, wie schnell wir uns melden sollten.</p>
+          <div class="choice-grid" data-field="motivation">
+            <label class="choice"><input type="radio" name="motivation" value="Ich möchte zeitnah wechseln und bin sehr motiviert" data-score="2" /><span class="key">A</span><span>Ich will zeitnah wechseln – sehr motiviert</span></label>
+            <label class="choice"><input type="radio" name="motivation" value="Ich schaue mich aktiv um" data-score="1" /><span class="key">B</span><span>Ich schaue mich aktiv um</span></label>
+            <label class="choice"><input type="radio" name="motivation" value="Erst mal nur interessehalber" data-score="0" /><span class="key">C</span><span>Erst mal nur interessehalber</span></label>
+          </div>
+        </div>
+
+        <!-- STEP 5: Details -->
+        <div class="fstep" data-step="5">
           <h3>Erzähl uns kurz von dir</h3>
           <p class="hint">Zwei kurze Angaben – danach fehlen nur noch deine Kontaktdaten.</p>
           <div class="field">
@@ -577,8 +611,8 @@ footer{padding:52px 0 36px;background:var(--brand-900);color:#c8ccd3}
           </div>
         </div>
 
-        <!-- STEP 3: Kontakt -->
-        <div class="fstep" data-step="3">
+        <!-- STEP 6: Kontakt -->
+        <div class="fstep" data-step="6">
           <h3>Du hast es fast geschafft</h3>
           <p class="hint">Hinterlasse kurz deine Kontaktdaten. Wir melden uns persönlich bei dir.</p>
           <div class="frow">
@@ -617,7 +651,7 @@ footer{padding:52px 0 36px;background:var(--brand-900);color:#c8ccd3}
         <div class="result" id="screenoutView">
           <div class="result__icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="m22 6-10 7L2 6"/></svg></div>
           <h3>Danke für dein Interesse</h3>
-          <p>Für diese Stelle setzen wir eine abgeschlossene Ausbildung oder einschlägige Berufserfahrung voraus. Aktuell passt das leider noch nicht. Du bist überzeugt, dass du trotzdem zu uns passt? Dann schreib uns gerne direkt an <a href="mailto:info@schaefer-dotternhausen.de">info@schaefer-dotternhausen.de</a>.<br /><br />Aus Versehen falsch angeklickt? Lade die Seite einfach neu und versuche es erneut.</p>
+          <p>Vielen Dank, dass du dir die Zeit genommen hast! Nach deinen Angaben passt es für diese Stelle aktuell leider noch nicht so richtig. Du bist überzeugt, dass du trotzdem zu uns passt? Dann schreib uns gerne direkt an <a href="mailto:info@schaefer-dotternhausen.de">info@schaefer-dotternhausen.de</a> – wir schauen es uns persönlich an.<br /><br />Aus Versehen etwas falsch angeklickt? Lade die Seite einfach neu und versuche es erneut.</p>
         </div>
 
         <div class="fnav" id="formNav">
@@ -787,8 +821,24 @@ footer{padding:52px 0 36px;background:var(--brand-900);color:#c8ccd3}
     btnNext.disabled=!stepValid(current);
     errBox.classList.remove("is-visible");
   }
+  /* Qualifizierung: 4 bewertete Fragen (Score je Antwort via data-score,
+     schlechteste Option = 0). Abgelehnt wird NUR, wer bei allen vier Fragen
+     die schlechteste Option wählt (Gesamt-Score <= SCREEN_OUT_MAX). Diese
+     Bewerbungen werden freundlich abgelehnt und NICHT an LeadTable gesendet. */
+  var QUAL_FIELDS = ["erfahrung","hintergrund","cad","motivation"];
+  var QUAL_LAST_STEP = 4;
+  var SCREEN_OUT_MAX = 0;
+  function qualScore(){
+    var s=0;
+    QUAL_FIELDS.forEach(function(f){
+      var c=form.querySelector('input[name="'+f+'"]:checked');
+      if(c) s+=parseInt(c.getAttribute("data-score")||"0",10);
+    });
+    return s;
+  }
   function next(){
     if (locked || !stepValid(current) || submitting) return;
+    if (current===QUAL_LAST_STEP && qualScore()<=SCREEN_OUT_MAX){ showScreenout(); return; }
     if (current===TOTAL){ submit(); return; }
     current++; render();
     var card=document.querySelector(".form-card");
@@ -862,6 +912,9 @@ footer{padding:52px 0 36px;background:var(--brand-900);color:#c8ccd3}
       "E-Mail": val("email"),
       "Telefonnummer": val("telefon"),
       "Erfahrung": val("erfahrung"),
+      "Passende Ausbildung": val("hintergrund"),
+      "CAD-Kenntnisse": val("cad"),
+      "Wechselmotivation": val("motivation"),
       "Sonstige Erfahrung": val("sonstige"),
       "Interesse": INTERESSE,
       "Frühester Start": val("start"),
