@@ -9,7 +9,7 @@ BILDER = "/home/user/schaefer-dotternhausen/bilder"
 OUT = "/home/user/schaefer-dotternhausen/creatives"
 os.makedirs(OUT, exist_ok=True)
 
-RED = (216, 31, 52)
+RED = (180, 20, 18)   # Schäfer-CI Feuerrot (RAL 3000), Online RGB 180/20/18
 LOGO = Image.open(os.path.join(BILDER, "schaefer-logo-weiss.png")).convert("RGBA")
 
 def f(path, size): return ImageFont.truetype(path, size)
