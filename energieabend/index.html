@@ -328,10 +328,13 @@ footer{padding:46px 0 34px;background:var(--brand-900);color:#c8ccd3}
       .then(function(r){ return r.json().catch(function(){ return {}; }).then(function(j){ return { ok:r.ok, j:j }; }); })
       .then(function(res){
         if (res.ok && res.j.success !== false){ form.style.display="none"; successView.classList.add("on"); successView.scrollIntoView({behavior:"smooth",block:"center"}); }
-        else { throw new Error(res.j.message || "fail"); }
+        else { throw new Error(res.j.message || ("HTTP " + res.ok)); }
       })
-      .catch(function(){
+      .catch(function(err){
         btn.disabled = false; btn.textContent = "Anmeldung absenden";
+        var reason = (err && err.message) ? err.message : "Netzwerkfehler";
+        console.warn("[Web3Forms] Versand fehlgeschlagen:", reason);
+        errBox.innerHTML = "Das hat leider nicht geklappt. Bitte versuchen Sie es erneut – oder melden Sie sich direkt: <strong>07427 9400611</strong> · info@schaefer-dotternhausen.de<br><span style='font-size:12px;opacity:.75'>Hinweis: " + reason + "</span>";
         errBox.classList.add("on");
       });
   });
