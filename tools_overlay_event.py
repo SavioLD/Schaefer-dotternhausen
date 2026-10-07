@@ -44,7 +44,7 @@ def make(size,frac,out):
     d=ImageDraw.Draw(canvas)
     # Schlagwort-Badges oben links auf dem Foto
     def badge(x,y,text):
-        bf=ImageFont.truetype(SANS,int(27*u)); tw=d.textlength(text,font=bf)
+        bf=ImageFont.truetype(SANS,int(25*u)); tw=d.textlength(text,font=bf)
         chk=int(48*u); pw=chk+tw+int(28*u); bh=int(56*u)
         d.rounded_rectangle([x,y,x+pw,y+bh],radius=bh//2,fill=(255,255,255))
         cxc=x+int(30*u); cyc=y+bh//2; r=int(16*u)
@@ -53,8 +53,8 @@ def make(size,frac,out):
         bb=d.textbbox((0,0),text,font=bf); d.text((x+chk,cyc-(bb[3]-bb[1])/2-bb[1]),text,font=bf,fill=INK)
         return bh
     bx=int(38*u); by=int(42*u)
-    h1=badge(bx,by,"Unabhängig")
-    badge(bx,by+h1+int(14*u),"Kosten senken")
+    h1=badge(bx,by,"Produktneutrale Beratung")
+    badge(bx,by+h1+int(14*u),"Ihr persönlicher Fahrplan")
     # Markenkante an der Naht
     d.rectangle([0,ph-max(4,int(7*u)),W,ph],fill=RED)
     cx=W//2; y=ph+int(30*u)
