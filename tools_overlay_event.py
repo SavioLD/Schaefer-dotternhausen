@@ -91,10 +91,54 @@ def make(size,frac,out,anchor=0.35,comp=1.0):
     pill(d,sx+w1+gap+w2/2,py,t2,(255,255,255),INK,pf,u,outline=(31,107,69))
     canvas.save(out,quality=90); print("saved",os.path.basename(out),size)
 
+def make_wide(out,size=(1200,628)):
+    W,H=size; pw=int(W*0.52)              # Foto links
+    canvas=Image.new("RGB",(W,H),PANEL)
+    canvas.paste(cover(Image.open(SRC).convert("RGB"),pw,H,0.42),(0,0))
+    d=ImageDraw.Draw(canvas)
+    # rote Trennkante vertikal
+    d.rectangle([pw-max(4,int(6)),0,pw,H],fill=RED)
+    # Panel rechts
+    panelw=W-pw; cx=pw+panelw//2; u=panelw/560.0
+    y=int(34*u)
+    # INFOABEND-Banner (rot) oben im Panel
+    btext="INFOABEND"
+    bpf,bs=fit(SANS,[btext],panelw*0.80,int(52*u)); btw=d.textlength(btext,font=bpf)
+    bpw=int(btw+70*u); bph=int(bs*1.6); bx0=int(cx-bpw/2); by0=y
+    d.rounded_rectangle([bx0,by0,bx0+bpw,by0+bph],radius=bph//2,fill=RED)
+    bb=d.textbbox((0,0),btext,font=bpf); d.text((cx-btw/2,by0+bph/2-(bb[3]-bb[1])/2-bb[1]),btext,font=bpf,fill=(255,255,255))
+    y=by0+bph+int(26*u)
+    # Logo
+    lw=int(panelw*0.42); lh=int(lw*LOGO.height/LOGO.width)
+    canvas.paste(LOGO.resize((lw,lh),Image.LANCZOS),(cx-lw//2,y),LOGO.resize((lw,lh),Image.LANCZOS))
+    y+=lh+int(16*u)
+    # Headline
+    hf,hs=fit(SERIF,["Energiesysteme","mit Zukunft"],panelw*0.9,int(46*u))
+    y=center(d,cx,y,["Energiesysteme","mit Zukunft"],hf,INK,int(hs*1.08))
+    # goldene Linie
+    lwid=int(panelw*0.26); d.rectangle([cx-lwid//2,y+int(8*u),cx+lwid//2,y+int(8*u)+max(3,int(5*u))],fill=GOLD)
+    y+=int(26*u)
+    # Datum GROSS
+    df,ds=fit(SANS,["Montag, 12. Oktober 2026"],panelw*0.92,int(40*u))
+    y=center(d,cx,y,["Montag, 12. Oktober 2026"],df,INK,int(ds*1.1))
+    # Uhrzeit + Ort
+    tf,ts=fit(SANS,["18.00 Uhr · Dotternhausen"],panelw*0.9,int(31*u))
+    y=center(d,cx,y+int(6*u),["18.00 Uhr · Dotternhausen"],tf,GREEN,int(ts*1.15))
+    # Pills: EINTRITT FREI + Themen
+    pf=ImageFont.truetype(SANS,int(22*u)); py=y+int(16*u)
+    t1="EINTRITT FREI"; t2="Wärmepumpe · PV · Biomasse"
+    w1=d.textlength(t1,font=pf)+int(34*u); w2=d.textlength(t2,font=pf)+int(34*u); gap=int(11*u)
+    sx=cx-(w1+w2+gap)/2
+    pill(d,sx+w1/2,py,t1,RED,(255,255,255),pf,u)
+    pill(d,sx+w1+gap+w2/2,py,t2,(255,255,255),INK,pf,u,outline=(31,107,69))
+    canvas.save(out,quality=90); print("saved",os.path.basename(out),size)
+
 os.makedirs(OUT,exist_ok=True)
 # Standard-Varianten
 for fk,sz,frac in [("4x5",(1080,1350),0.52),("1x1",(1080,1080),0.38),("9x16",(1080,1920),0.58)]:
     make(sz,frac,os.path.join(OUT,f"event_ki_{fk}.jpg"))
 # Feed-Variante 1:1: hoeherer Fotoanteil + tieferer Ausschnitt, Haus weniger angeschnitten
 make((1080,1080),0.53,os.path.join(OUT,"event_ki_feed.jpg"),anchor=0.52,comp=0.5)
+# Querformat (Meta-Landscape 1.91:1) mit den wichtigsten Infos
+make_wide(os.path.join(OUT,"event_ki_quer.jpg"))
 print("DONE")
