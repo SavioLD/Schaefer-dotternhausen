@@ -4,8 +4,45 @@
 **Termin:** Montag, 12. Oktober 2026, 18:00 Uhr · Eintritt frei
 **Ort:** Schäfer intelligente Haustechnik GmbH, Daimlerstraße 2, 72359 Dotternhausen
 **Referent:** Dipl.-Ing. & Klimacoach Achim Kimmich (produktneutral)
-**Anmeldung:** Tel. 07427 9400611 · info@schaefer-dotternhausen.de · QR-Code
-**CTA-Button:** „Mehr dazu" / „Jetzt anmelden"
+**Anmeldung:** über die Landingpage (Anmeldeformular) · alternativ Tel. 07427 9400611 · info@schaefer-dotternhausen.de
+**CTA-Button:** „Jetzt anmelden" / „Mehr dazu"
+
+---
+
+## ★ FINALE META-ANZEIGE (KI-Creative)
+**Creatives:** `event_ki_feed.jpg` (Feed 1:1) · `event_ki_4x5.jpg` (Feed) · `event_ki_9x16.jpg` (Story/Reels)
+**Ziel-URL / CTA:** Anmeldeseite (Energieabend-Landingpage)
+
+### Primärtext – Variante A (Unabhängigkeit)
+> Steigende Energiekosten? Zeit, Ihr Zuhause zukunftssicher zu machen. 🏡⚡
+> Beim kostenlosen Infoabend **„Energiesysteme mit Zukunft"** zeigt Ihnen Klimacoach Achim Kimmich produktneutral, wie Wärmepumpe, Photovoltaik und Biomasse clever zusammenspielen – für dauerhaft bezahlbare Wärme, eigenen Strom und echte Unabhängigkeit.
+>
+> 📅 Montag, 12. Oktober 2026 · 18:00 Uhr
+> 📍 Schäfer intelligente Haustechnik, Dotternhausen
+> 🎟️ Eintritt frei – Plätze sind begrenzt.
+>
+> 👉 Jetzt kostenlos anmelden!
+
+### Primärtext – Variante B (Frage / Problem)
+> Wärmepumpe, PV oder doch Biomasse – was passt wirklich zu IHREM Haus? 🤔
+> Statt Einzellösungen zeigen wir Ihnen, wie ein durchdachtes Energiesystem Kosten senkt und Fördermittel optimal nutzt. Verständlich, neutral und ohne Verkaufsdruck.
+>
+> Kostenloser Infoabend „Energiesysteme mit Zukunft"
+> 📅 Mo, 12.10.2026 · 18:00 Uhr · 📍 Dotternhausen · 🎟️ Eintritt frei
+>
+> Sichern Sie sich jetzt Ihren Platz – hier anmelden! 👇
+
+### Primärtext – Variante C (kurz & knackig)
+> Ihr Zuhause. Ihre Energie. Ihre Unabhängigkeit. ⚡
+> Kostenloser Infoabend „Energiesysteme mit Zukunft" – Wärmepumpe, PV & Biomasse clever kombiniert.
+> 📅 Mo, 12.10.2026 · 18 Uhr · 📍 Dotternhausen · Eintritt frei.
+> Jetzt anmelden – Plätze begrenzt! 👉
+
+### Überschrift (Headline)
+> Infoabend: Energiesysteme mit Zukunft
+
+### Beschreibung (Link-Beschreibung)
+> Mo, 12.10.2026 · 18 Uhr · Dotternhausen · Eintritt frei
 
 ## Creatives (Ordner `creatives/`)
 - `event_energiesysteme_plan_4x5.jpg` / `_1x1.jpg` – Feed (Planungs-Motiv)

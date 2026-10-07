@@ -13,9 +13,9 @@ SRC=sys.argv[1] if len(sys.argv)>1 else os.path.join(BILDER,"ki_abend.jpg")
 RED=(180,20,18); INK=(18,46,34); GREEN=(31,107,69); GOLD=(198,140,46); PANEL=(255,255,255)
 LOGO=Image.open(os.path.join(BILDER,"RZ_schaefer_logo.png")).convert("RGBA")  # farbig fuer hellen Grund
 
-def cover(img,W,H):
+def cover(img,W,H,anchor=0.35):
     iw,ih=img.size; s=max(W/iw,H/ih); img=img.resize((int(iw*s+1),int(ih*s+1)),Image.LANCZOS)
-    nw,nh=img.size; x=(nw-W)//2; y=int((nh-H)*0.35); y=max(0,min(y,nh-H)); return img.crop((x,y,x+W,y+H))
+    nw,nh=img.size; x=(nw-W)//2; y=int((nh-H)*anchor); y=max(0,min(y,nh-H)); return img.crop((x,y,x+W,y+H))
 def fit(path,lines,maxw,start):
     s=start; d=ImageDraw.Draw(Image.new("RGB",(4,4)))
     while s>12:
@@ -36,11 +36,11 @@ def pill(d,cx,py,text,bg,fg,pf,u,outline=None):
     bb=d.textbbox((0,0),text,font=pf); d.text((cx-tw/2,py+ph/2-(bb[3]-bb[1])/2-bb[1]),text,font=pf,fill=fg)
     return pw
 
-def make(size,frac,out):
-    W,H=size; u=W/1080.0
+def make(size,frac,out,anchor=0.35,comp=1.0):
+    W,H=size; u=W/1080.0; g=u*comp
     ph=int(H*frac)
     canvas=Image.new("RGB",(W,H),PANEL);
-    canvas.paste(cover(Image.open(SRC).convert("RGB"),W,ph),(0,0))
+    canvas.paste(cover(Image.open(SRC).convert("RGB"),W,ph,anchor),(0,0))
     d=ImageDraw.Draw(canvas)
     # Schlagwort-Badges oben links auf dem Foto
     def badge(x,y,text):
@@ -66,24 +66,24 @@ def make(size,frac,out):
     d.rounded_rectangle([bx0+int(4*u),by0+int(7*u),bx0+bpw+int(4*u),by0+bph+int(7*u)],radius=bph//2,fill=(118,12,11))
     d.rounded_rectangle([bx0,by0,bx0+bpw,by0+bph],radius=bph//2,fill=RED)
     bb=d.textbbox((0,0),btext,font=bpf); d.text((cx-btw/2,by0+bph/2-(bb[3]-bb[1])/2-bb[1]),btext,font=bpf,fill=(255,255,255))
-    y=by0+bph+int(22*u)
+    y=by0+bph+int(22*g)
     # Logo
     lw=int(W*0.26); lh=int(lw*LOGO.height/LOGO.width)
     canvas.paste(LOGO.resize((lw,lh),Image.LANCZOS),((W-lw)//2,y),LOGO.resize((lw,lh),Image.LANCZOS))
-    y+=lh+int(14*u)
+    y+=lh+int(14*g)
     # Headline
     hf,hs=fit(SERIF,["Energiesysteme mit Zukunft"],W*0.9,int(58*u))
     y=center(d,cx,y,["Energiesysteme mit Zukunft"],hf,INK,int(hs*1.1))
-    y+=int(8*u)
+    y+=int(8*g)
     # Datum GROSS (Eye-Catcher)
     df,ds=fit(SANS,["Montag, 12. Oktober 2026"],W*0.9,int(60*u))
     y=center(d,cx,y,["Montag, 12. Oktober 2026"],df,INK,int(ds*1.12))
     # goldene Linie
     lwid=int(W*0.30); d.rectangle([cx-lwid//2,y+int(4*u),cx+lwid//2,y+int(4*u)+max(3,int(5*u))],fill=GOLD);
     tf,ts=fit(SANS,["18.00 Uhr · Dotternhausen"],W*0.85,int(42*u))
-    y=center(d,cx,y+int(24*u),["18.00 Uhr · Dotternhausen"],tf,GREEN,int(ts*1.2))
+    y=center(d,cx,y+int(24*g),["18.00 Uhr · Dotternhausen"],tf,GREEN,int(ts*1.2))
     # Pills
-    pf=ImageFont.truetype(SANS,int(29*u)); py=y+int(18*u)
+    pf=ImageFont.truetype(SANS,int(29*u)); py=y+int(18*g)
     t1="EINTRITT FREI"; t2="Wärmepumpe · PV · Biomasse"
     w1=d.textlength(t1,font=pf)+int(48*u); w2=d.textlength(t2,font=pf)+int(48*u); gap=int(16*u)
     sx=cx-(w1+w2+gap)/2
@@ -92,6 +92,9 @@ def make(size,frac,out):
     canvas.save(out,quality=90); print("saved",os.path.basename(out),size)
 
 os.makedirs(OUT,exist_ok=True)
+# Standard-Varianten
 for fk,sz,frac in [("4x5",(1080,1350),0.52),("1x1",(1080,1080),0.38),("9x16",(1080,1920),0.58)]:
     make(sz,frac,os.path.join(OUT,f"event_ki_{fk}.jpg"))
+# Feed-Variante 1:1: hoeherer Fotoanteil + tieferer Ausschnitt, Haus weniger angeschnitten
+make((1080,1080),0.53,os.path.join(OUT,"event_ki_feed.jpg"),anchor=0.52,comp=0.5)
 print("DONE")
