@@ -44,17 +44,17 @@ def make(size,frac,out):
     d=ImageDraw.Draw(canvas)
     # Schlagwort-Badges oben links auf dem Foto
     def badge(x,y,text):
-        bf=ImageFont.truetype(SANS,int(25*u)); tw=d.textlength(text,font=bf)
-        chk=int(48*u); pw=chk+tw+int(28*u); bh=int(56*u)
+        bf=ImageFont.truetype(SANS,int(24*u)); tw=d.textlength(text,font=bf)
+        chk=int(44*u); pw=chk+tw+int(26*u); bh=int(52*u)
         d.rounded_rectangle([x,y,x+pw,y+bh],radius=bh//2,fill=(255,255,255))
         cxc=x+int(30*u); cyc=y+bh//2; r=int(16*u)
         d.ellipse([cxc-r,cyc-r,cxc+r,cyc+r],fill=RED)
         d.line([(cxc-int(7*u),cyc),(cxc-int(1*u),cyc+int(6*u)),(cxc+int(8*u),cyc-int(8*u))],fill=(255,255,255),width=max(2,int(4*u)),joint="curve")
         bb=d.textbbox((0,0),text,font=bf); d.text((x+chk,cyc-(bb[3]-bb[1])/2-bb[1]),text,font=bf,fill=INK)
         return bh
-    bx=int(38*u); by=int(42*u)
-    h1=badge(bx,by,"Produktneutrale Beratung")
-    badge(bx,by+h1+int(14*u),"Ihr persönlicher Fahrplan")
+    bx=int(38*u); yy=int(40*u)
+    for it in ["Energiefreiheit","Passendes System","Kosten senken","Fördermittel nutzen"]:
+        yy+=badge(bx,yy,it)+int(13*u)
     # Markenkante an der Naht
     d.rectangle([0,ph-max(4,int(7*u)),W,ph],fill=RED)
     cx=W//2; y=ph+int(30*u)
