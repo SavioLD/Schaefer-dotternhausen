@@ -57,13 +57,20 @@ def make(size,frac,out):
         yy+=badge(bx,yy,it)+int(13*u)
     # Markenkante an der Naht
     d.rectangle([0,ph-max(4,int(7*u)),W,ph],fill=RED)
-    cx=W//2; y=ph+int(30*u)
+    cx=W//2
+    # Infoabend-Banner – grosser roter Blickfang, straddelt die Naht
+    btext="KOSTENLOSER INFOABEND"
+    bpf,bs=fit(SANS,[btext],W*0.82,int(48*u)); btw=d.textlength(btext,font=bpf)
+    bpw=int(btw+80*u); bph=int(bs*1.9)
+    bx0=int(cx-bpw/2); by0=int(ph-bph//2)
+    d.rounded_rectangle([bx0+int(4*u),by0+int(7*u),bx0+bpw+int(4*u),by0+bph+int(7*u)],radius=bph//2,fill=(118,12,11))
+    d.rounded_rectangle([bx0,by0,bx0+bpw,by0+bph],radius=bph//2,fill=RED)
+    bb=d.textbbox((0,0),btext,font=bpf); d.text((cx-btw/2,by0+bph/2-(bb[3]-bb[1])/2-bb[1]),btext,font=bpf,fill=(255,255,255))
+    y=by0+bph+int(22*u)
     # Logo
-    lw=int(W*0.31); lh=int(lw*LOGO.height/LOGO.width)
+    lw=int(W*0.26); lh=int(lw*LOGO.height/LOGO.width)
     canvas.paste(LOGO.resize((lw,lh),Image.LANCZOS),((W-lw)//2,y),LOGO.resize((lw,lh),Image.LANCZOS))
-    y+=lh+int(16*u)
-    # Eyebrow
-    ef=ImageFont.truetype(SANS,int(28*u)); tracked(d,cx,y,"KOSTENLOSER INFOABEND",ef,RED,int(6*u)); y+=int(46*u)
+    y+=lh+int(14*u)
     # Headline
     hf,hs=fit(SERIF,["Energiesysteme mit Zukunft"],W*0.9,int(58*u))
     y=center(d,cx,y,["Energiesysteme mit Zukunft"],hf,INK,int(hs*1.1))
@@ -85,6 +92,6 @@ def make(size,frac,out):
     canvas.save(out,quality=90); print("saved",os.path.basename(out),size)
 
 os.makedirs(OUT,exist_ok=True)
-for fk,sz,frac in [("4x5",(1080,1350),0.54),("1x1",(1080,1080),0.40),("9x16",(1080,1920),0.60)]:
+for fk,sz,frac in [("4x5",(1080,1350),0.52),("1x1",(1080,1080),0.38),("9x16",(1080,1920),0.58)]:
     make(sz,frac,os.path.join(OUT,f"event_ki_{fk}.jpg"))
 print("DONE")
