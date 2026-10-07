@@ -59,9 +59,9 @@ def make(size,frac,out):
     d.rectangle([0,ph-max(4,int(7*u)),W,ph],fill=RED)
     cx=W//2
     # Infoabend-Banner – grosser roter Blickfang, straddelt die Naht
-    btext="KOSTENLOSER INFOABEND"
-    bpf,bs=fit(SANS,[btext],W*0.82,int(48*u)); btw=d.textlength(btext,font=bpf)
-    bpw=int(btw+80*u); bph=int(bs*1.9)
+    btext="INFOABEND"
+    bpf,bs=fit(SANS,[btext],W*0.72,int(66*u)); btw=d.textlength(btext,font=bpf)
+    bpw=int(btw+96*u); bph=int(bs*1.7)
     bx0=int(cx-bpw/2); by0=int(ph-bph//2)
     d.rounded_rectangle([bx0+int(4*u),by0+int(7*u),bx0+bpw+int(4*u),by0+bph+int(7*u)],radius=bph//2,fill=(118,12,11))
     d.rounded_rectangle([bx0,by0,bx0+bpw,by0+bph],radius=bph//2,fill=RED)
