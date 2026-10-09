@@ -139,6 +139,8 @@ for fk,sz,frac in [("4x5",(1080,1350),0.52),("1x1",(1080,1080),0.38),("9x16",(10
     make(sz,frac,os.path.join(OUT,f"event_ki_{fk}.jpg"))
 # Feed-Variante 1:1: hoeherer Fotoanteil + tieferer Ausschnitt, Haus weniger angeschnitten
 make((1080,1080),0.53,os.path.join(OUT,"event_ki_feed.jpg"),anchor=0.52,comp=0.5)
+# Feed-Post 4:5 (Instagram/Facebook) mit vollem Haus-Look wie Story
+make((1080,1350),0.60,os.path.join(OUT,"event_ki_feed_4x5.jpg"),anchor=0.48,comp=0.6)
 # Querformat (Meta-Landscape 1.91:1) mit den wichtigsten Infos
 make_wide(os.path.join(OUT,"event_ki_quer.jpg"))
 print("DONE")
